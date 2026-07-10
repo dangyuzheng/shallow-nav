@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ExternalLink, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Site } from '../types';
+import { categories } from '../data/sites';
 
 interface SiteCardProps {
   site: Site;
@@ -18,6 +19,9 @@ export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCard
     e.stopPropagation();
     onToggleFavorite(site.id);
   };
+
+  const category = categories.find(c => c.id === site.category);
+  const fallbackGradient = category?.gradient || 'linear-gradient(135deg, #6366f1, #a78bfa)';
 
   return (
     <motion.a
@@ -38,9 +42,12 @@ export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCard
               alt={site.name}
               onError={() => setImgError(true)}
               loading="lazy"
+              referrerPolicy="no-referrer"
             />
           ) : (
-            <span className="logo-fallback">{site.name[0]}</span>
+            <span className="logo-fallback" style={{ background: fallbackGradient }}>
+              {site.name[0]}
+            </span>
           )}
         </div>
         <motion.button
@@ -62,8 +69,7 @@ export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCard
       </div>
       <div className="card-footer">
         <span className="visit-btn">
-          访问
-          <ExternalLink size={12} />
+          <ExternalLink size={14} />
         </span>
       </div>
     </motion.a>

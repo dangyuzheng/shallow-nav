@@ -1,4 +1,4 @@
-import { Compass, Heart, ArrowUp } from 'lucide-react';
+import { Heart, ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
@@ -24,7 +24,7 @@ export function Header({ showFavoritesOnly, onToggleFavorites, favoriteCount }: 
       <div className="header-inner">
         <div className="header-left">
           <div className="logo">
-            <Compass size={28} strokeWidth={1.8} />
+            <img src="/logo.png" alt="浅途 Nav" className="logo-img" />
             <div className="logo-text">
               <h1>浅途 Nav</h1>
               <span className="slogan">轻浅行路，直达实用良站</span>

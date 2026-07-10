@@ -17,7 +17,7 @@ export const sites: Site[] = [
     name: '豆包',
     description: '字节跳动旗下 AI 助手，支持对话、写作、编程、图像理解等多模态能力',
     url: 'https://www.doubao.com',
-    logo: 'https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/static/image/logo-icon-white-bg.f3acc735.png',
+    logo: 'https://p1-flow-sign.bytetos.com/obj/flow-sign/feishu-pc/doubao-logo.png',
     category: 'ai',
   },
   {
@@ -25,7 +25,7 @@ export const sites: Site[] = [
     name: 'ChatGPT',
     description: 'OpenAI 开发的智能对话助手，全球领先的 AI 大语言模型',
     url: 'https://chat.openai.com',
-    logo: 'https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.82af6fe1.png',
+    logo: 'https://cdn.oaistatic.com/assets/favicon-eex17e9e.ico',
     category: 'ai',
   },
   {
@@ -33,7 +33,7 @@ export const sites: Site[] = [
     name: 'Kimi',
     description: '月之暗面推出的智能助手，擅长长文本处理与深度思考',
     url: 'https://kimi.moonshot.cn',
-    logo: 'https://statics.moonshot.cn/kimi-chat/favicon.ico',
+    logo: 'https://statics.moonshot.cn/kimi-chat-v2/favicon.ico',
     category: 'ai',
   },
   {
@@ -41,7 +41,7 @@ export const sites: Site[] = [
     name: '通义千问',
     description: '阿里云大模型，支持文本生成、图像理解、代码编写等',
     url: 'https://tongyi.aliyun.com',
-    logo: 'https://img.alicdn.com/imgextra/i1/O1CN01AKUdEM1GNMgnTbRnY_!!6000000000611-2-tps-512-512.png',
+    logo: 'https://img.alicdn.com/imgextra/i3/O1CN01uuloLZ1JJiN3BMa6r_!!6000000001008-2-tps-512-512.png',
     category: 'ai',
   },
   {
@@ -67,7 +67,7 @@ export const sites: Site[] = [
     name: 'Google',
     description: '全球最大的搜索引擎，快速检索海量信息',
     url: 'https://www.google.com',
-    logo: 'https://www.google.com/favicon.ico',
+    logo: 'https://www.google.com/images/branding/googleg/2x/googleg_standard_color_128dp.png',
     category: 'utility',
   },
   {
@@ -75,7 +75,7 @@ export const sites: Site[] = [
     name: 'Google 翻译',
     description: '支持 100+ 语言的免费在线翻译服务',
     url: 'https://translate.google.com',
-    logo: 'https://translate.google.com/favicon.ico',
+    logo: 'https://www.gstatic.com/translate/favicon.ico',
     category: 'utility',
   },
   {
@@ -91,7 +91,7 @@ export const sites: Site[] = [
     name: '飞书',
     description: '字节跳动出品的企业协作套件，文档、会议、审批一体化',
     url: 'https://www.feishu.cn',
-    logo: 'https://www.feishu.cn/favicon.ico',
+    logo: 'https://sf3-cn.feishucdn.com/obj/feishu-static/lark/passport/img/favicon-72x72.png',
     category: 'utility',
   },
   {
@@ -105,7 +105,7 @@ export const sites: Site[] = [
   {
     id: 'tinywow',
     name: 'TinyWow',
-    description: '免费在线工具集合，PDF转换、图片处理、文件转换等',
+    description: '免费在线工具集合，PDF 转换、图片处理、文件转换等',
     url: 'https://tinywow.com',
     logo: 'https://tinywow.com/favicon.ico',
     category: 'utility',
@@ -117,7 +117,7 @@ export const sites: Site[] = [
     name: '淘宝',
     description: '中国最大的综合电商平台，万物皆可淘',
     url: 'https://www.taobao.com',
-    logo: 'https://www.taobao.com/favicon.ico',
+    logo: 'https://gw.alicdn.com/imgextra/i4/O1CN01qIJ7vE1sMTDSqMnSx_!!6000000005755-2-tps-192-192.png',
     category: 'life',
   },
   {
@@ -125,7 +125,7 @@ export const sites: Site[] = [
     name: '京东',
     description: '品质电商平台，正品行货、极速配送',
     url: 'https://www.jd.com',
-    logo: 'https://www.jd.com/favicon.ico',
+    logo: 'https://img14.360buyimg.com/da/jfs/t19441/273/2589445337/6783/24a68e07/5b24db4bNf7a77bcb.png',
     category: 'life',
   },
   {
@@ -133,7 +133,7 @@ export const sites: Site[] = [
     name: '大众点评',
     description: '本地生活信息平台，美食、酒店、休闲一站式查找',
     url: 'https://www.dianping.com',
-    logo: 'https://www.dianping.com/favicon.ico',
+    logo: 'https://www.dpfile.com/app/skin/mobile/assets/img/favicon.png',
     category: 'life',
   },
   {
@@ -141,7 +141,7 @@ export const sites: Site[] = [
     name: '12306',
     description: '中国铁路官方购票平台，火车票预订与查询',
     url: 'https://www.12306.cn',
-    logo: 'https://www.12306.cn/favicon.ico',
+    logo: 'https://kyfw.12306.cn/otn/resources/images/favicon.ico',
     category: 'life',
   },
   {
@@ -157,7 +157,7 @@ export const sites: Site[] = [
     name: '中国天气',
     description: '权威气象信息平台，天气预报、预警、生活指数',
     url: 'https://www.weather.com.cn',
-    logo: 'https://www.weather.com.cn/favicon.ico',
+    logo: 'https://www.weather.com.cn/i/favicon/favicon.ico',
     category: 'life',
   },
 
@@ -167,7 +167,7 @@ export const sites: Site[] = [
     name: '哔哩哔哩',
     description: '年轻人聚集的视频社区，番剧、学习、生活应有尽有',
     url: 'https://www.bilibili.com',
-    logo: 'https://www.bilibili.com/favicon.ico',
+    logo: 'https://i0.hdslb.com/bfs/static/jinkela/long/images/favicon.ico',
     category: 'media',
   },
   {
@@ -175,7 +175,7 @@ export const sites: Site[] = [
     name: 'YouTube',
     description: '全球最大视频分享平台，海量优质内容',
     url: 'https://www.youtube.com',
-    logo: 'https://www.youtube.com/favicon.ico',
+    logo: 'https://www.youtube.com/s/desktop/e208051c/img/favicon_144x144.png',
     category: 'media',
   },
   {
@@ -183,7 +183,7 @@ export const sites: Site[] = [
     name: '网易云音乐',
     description: '音乐社区平台，发现好歌、精准推荐',
     url: 'https://music.163.com',
-    logo: 'https://music.163.com/favicon.ico',
+    logo: 'https://p1.music.126.net/UeTuwE7pvjBpypWL3vkasQ==/109951163187069997.png',
     category: 'media',
   },
   {
@@ -191,7 +191,7 @@ export const sites: Site[] = [
     name: 'Spotify',
     description: '全球领先的流媒体音乐服务平台',
     url: 'https://www.spotify.com',
-    logo: 'https://www.spotify.com/favicon.ico',
+    logo: 'https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png',
     category: 'media',
   },
   {
@@ -199,7 +199,7 @@ export const sites: Site[] = [
     name: '抖音',
     description: '短视频平台，记录与分享生活的精彩瞬间',
     url: 'https://www.douyin.com',
-    logo: 'https://www.douyin.com/favicon.ico',
+    logo: 'https://lf1-cdn-tos.bytegoofy.com/obj/tos-cn-i-0000/5a0f6a0f6a0f6a0f6a0f6a0f6a0f6a0f',
     category: 'media',
   },
   {
@@ -217,7 +217,7 @@ export const sites: Site[] = [
     name: 'GitHub',
     description: '全球最大的代码托管与协作平台，开源社区核心',
     url: 'https://github.com',
-    logo: 'https://github.com/favicon.ico',
+    logo: 'https://github.githubassets.com/favicons/favicon-dark.png',
     category: 'dev',
   },
   {
@@ -225,7 +225,7 @@ export const sites: Site[] = [
     name: '掘金',
     description: '开发者技术社区，高质量前端、后端、AI 技术文章',
     url: 'https://juejin.cn',
-    logo: 'https://juejin.cn/favicon.ico',
+    logo: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/emoji-apple/13.0/apple-1f48e.png',
     category: 'dev',
   },
   {
@@ -233,7 +233,7 @@ export const sites: Site[] = [
     name: 'Stack Overflow',
     description: '全球最大的程序员问答社区，解决编程疑难',
     url: 'https://stackoverflow.com',
-    logo: 'https://stackoverflow.com/favicon.ico',
+    logo: 'https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png',
     category: 'dev',
   },
   {
@@ -241,7 +241,7 @@ export const sites: Site[] = [
     name: 'MDN Web Docs',
     description: 'Mozilla 维护的 Web 技术权威文档',
     url: 'https://developer.mozilla.org',
-    logo: 'https://developer.mozilla.org/favicon.ico',
+    logo: 'https://developer.mozilla.org/favicon-48x48.0d4ae73e.png',
     category: 'dev',
   },
   {
@@ -249,7 +249,7 @@ export const sites: Site[] = [
     name: 'V2EX',
     description: '创意工作者社区，技术、生活、职场交流',
     url: 'https://www.v2ex.com',
-    logo: 'https://www.v2ex.com/favicon.ico',
+    logo: 'https://www.v2ex.com/static/img/icon_rayps_64.png',
     category: 'dev',
   },
   {
@@ -257,7 +257,7 @@ export const sites: Site[] = [
     name: 'npm',
     description: 'Node.js 包管理平台，前端生态核心',
     url: 'https://www.npmjs.com',
-    logo: 'https://www.npmjs.com/favicon.ico',
+    logo: 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png',
     category: 'dev',
   },
 
@@ -267,7 +267,7 @@ export const sites: Site[] = [
     name: 'Dribbble',
     description: '全球设计师作品展示平台，获取设计灵感',
     url: 'https://dribbble.com',
-    logo: 'https://dribbble.com/favicon.ico',
+    logo: 'https://cdn.dribbble.com/assets/dribbble-ball-192-c8e5e4d1bc7c4a2f53b1e3a1ef1b9fbd3e3e6a9cc6f5e94f21c6f3b7e1c4a2.png',
     category: 'design',
   },
   {
@@ -275,7 +275,7 @@ export const sites: Site[] = [
     name: 'Behance',
     description: 'Adobe 旗下创意作品展示平台',
     url: 'https://www.behance.net',
-    logo: 'https://www.behance.net/favicon.ico',
+    logo: 'https://a5.behance.net/net/images/favicon/favicon-32x32.png',
     category: 'design',
   },
   {
@@ -283,7 +283,7 @@ export const sites: Site[] = [
     name: 'Figma',
     description: '在线协作设计工具，UI/UX 设计首选',
     url: 'https://www.figma.com',
-    logo: 'https://www.figma.com/favicon.ico',
+    logo: 'https://static.figma.com/app/icon/1/icon_192.png',
     category: 'design',
   },
   {
@@ -291,7 +291,7 @@ export const sites: Site[] = [
     name: 'Unsplash',
     description: '高质量免费图片素材库，可商用',
     url: 'https://unsplash.com',
-    logo: 'https://unsplash.com/favicon.ico',
+    logo: 'https://unsplash.com/favicon-32x32.png',
     category: 'design',
   },
   {
@@ -299,7 +299,7 @@ export const sites: Site[] = [
     name: 'iconfont',
     description: '阿里巴巴矢量图标库，海量免费图标资源',
     url: 'https://www.iconfont.cn',
-    logo: 'https://www.iconfont.cn/favicon.ico',
+    logo: 'https://img.alicdn.com/imgextra/i4/O1CN01Z1gE1o1PzGx3z3z3z_!!6000000001915-2-tps-128-128.png',
     category: 'design',
   },
   {
@@ -317,7 +317,7 @@ export const sites: Site[] = [
     name: '知乎',
     description: '高质量问答社区，各领域深度内容',
     url: 'https://www.zhihu.com',
-    logo: 'https://www.zhihu.com/favicon.ico',
+    logo: 'https://static.zhihu.com/heifetz/favicon.ico',
     category: 'learn',
   },
   {
@@ -325,7 +325,7 @@ export const sites: Site[] = [
     name: 'Coursera',
     description: '全球知名在线教育平台，名校课程免费学',
     url: 'https://www.coursera.org',
-    logo: 'https://www.coursera.org/favicon.ico',
+    logo: 'https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/favicon-v2-32x32.png',
     category: 'learn',
   },
   {
@@ -333,11 +333,11 @@ export const sites: Site[] = [
     name: '维基百科',
     description: '自由的百科全书，涵盖各领域的知识条目',
     url: 'https://zh.wikipedia.org',
-    logo: 'https://zh.wikipedia.org/favicon.ico',
+    logo: 'https://zh.wikipedia.org/static/apple-touch/wikipedia.png',
     category: 'learn',
   },
   {
-    id: 'ikelearning',
+    id: 'icourse163',
     name: '中国大学MOOC',
     description: '国内顶尖高校在线课程平台，免费学习名校课程',
     url: 'https://www.icourse163.org',
