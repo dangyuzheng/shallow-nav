@@ -13,6 +13,46 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Prevent Vite HMR WebSocket from causing periodic page reloads
+      // in sandboxed/proxied environments where WebSocket connections are unstable
+      (function() {
+        var OrigWebSocket = window.WebSocket;
+        function MockWebSocket() {
+          this.readyState = 3;
+          this.addEventListener = function(){};
+          this.removeEventListener = function(){};
+          this.close = function(){};
+          this.send = function(){};
+        }
+        MockWebSocket.CONNECTING = 0;
+        MockWebSocket.OPEN = 1;
+        MockWebSocket.CLOSING = 2;
+        MockWebSocket.CLOSED = 3;
+        MockWebSocket.prototype = OrigWebSocket.prototype;
+        window.WebSocket = function(url, protocols) {
+          if (typeof url === 'string' && url.indexOf('/__vite') >= 0) {
+            return new MockWebSocket();
+          }
+          // Also block ws:// connections to the same origin (Vite HMR default)
+          if (typeof url === 'string' && (url.indexOf('ws://') === 0 || url.indexOf('wss://') === 0)) {
+            try {
+              var u = new URL(url);
+              var loc = window.location;
+              if (u.host === loc.host && u.pathname === '/') {
+                return new MockWebSocket();
+              }
+            } catch(e) {}
+          }
+          return new OrigWebSocket(url, protocols);
+        };
+        window.WebSocket.CONNECTING = 0;
+        window.WebSocket.OPEN = 1;
+        window.WebSocket.CLOSING = 2;
+        window.WebSocket.CLOSED = 3;
+        window.WebSocket.prototype = OrigWebSocket.prototype;
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

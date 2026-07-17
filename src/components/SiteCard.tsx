@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Site } from '../types';
 import { categories } from '../data/sites';
@@ -66,11 +66,6 @@ export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCard
       <div className="card-body">
         <h3 className="card-title">{site.name}</h3>
         <p className="card-desc">{site.description}</p>
-      </div>
-      <div className="card-footer">
-        <span className="visit-btn">
-          <ExternalLink size={14} />
-        </span>
       </div>
     </motion.a>
   );
