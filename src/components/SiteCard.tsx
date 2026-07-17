@@ -45,34 +45,42 @@ export const SiteCard = memo(function SiteCard({
       transition={{ duration: 0.3, delay: index * 0.04 }}
       whileHover={{ y: -4 }}
     >
-      {/* Favorite button */}
-      <button
-        className={`favorite-btn ${isFavorite ? 'active' : ''}`}
-        onClick={handleFavoriteClick}
-        aria-label={isFavorite ? '取消收藏' : '收藏'}
-      >
-        <Heart
-          size={16}
-          fill={isFavorite ? 'currentColor' : 'none'}
-        />
-      </button>
+      
 
       {/* Card body */}
       <div className="card-body">
-        <div className="card-logo">
-          {imgError ? (
-            <div className="logo-fallback" style={{ background: 'linear-gradient(135deg, #6366f1, #a78bfa)' }}>
-              {site.name.charAt(0)}
-            </div>
-          ) : (
-            <img
-              src={site.logo}
-              alt={site.name}
-              onError={() => setImgError(true)}
-              loading="lazy"
-              referrerPolicy="no-referrer"
+        <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+          <div className="card-logo">
+            {imgError ? (
+              <div className="logo-fallback" style={{ background: 'linear-gradient(135deg, #6366f1, #a78bfa)' }}>
+                {site.name.charAt(0)}
+              </div>
+            ) : (
+              <img
+                src={site.logo}
+                alt={site.name}
+                onError={() => setImgError(true)}
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+            )}
+          </div>
+
+          {/* Favorite button */}
+          <button
+            className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+            onClick={handleFavoriteClick}
+            aria-label={isFavorite ? '取消收藏' : '收藏'}
+          >
+            <Heart
+              size={16}
+              fill={isFavorite ? '#f43f5e' : 'none'}
             />
-          )}
+          </button>
         </div>
         <div className="card-info">
           <h3 className="card-name">{site.name}</h3>
