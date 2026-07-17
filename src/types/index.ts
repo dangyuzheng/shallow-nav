@@ -1,3 +1,6 @@
+export type CostTag = 'free' | 'paid' | 'freemium';
+export type ExpTag = 'no-login';
+
 export interface Site {
   id: string;
   name: string;
@@ -5,6 +8,10 @@ export interface Site {
   url: string;
   logo: string;
   category: string;
+  tags: {
+    cost?: CostTag;
+    exp?: ExpTag[];
+  };
 }
 
 export interface Category {
@@ -13,4 +20,11 @@ export interface Category {
   icon: string;
   color: string;
   gradient: string;
+}
+
+export interface TagOption {
+  id: string;
+  label: string;
+  group: string;
+  color: string;
 }

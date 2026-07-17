@@ -3,20 +3,38 @@ import { Header } from './components/Header';
 import { SearchBar } from './components/SearchBar';
 import { CategoryNav } from './components/CategoryNav';
 import { SiteCard } from './components/SiteCard';
+import { RecentVisits } from './components/RecentVisits';
 import { Footer } from './components/Footer';
 import { useFavorites } from './hooks/useFavorites';
-import { categories, sites } from './data/sites';
+import { useRecentVisits } from './hooks/useRecentVisits';
+import { categories, sites, tagOptions } from './data/sites';
 import { motion } from 'framer-motion';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [activeTags, setActiveTags] = useState<string[]>([]);
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const { addVisit, getRecentSites, clearRecent } = useRecentVisits();
 
   const handleSearch = useCallback((query: string) => {
     setSearchQuery(query);
   }, []);
+
+  const handleTagToggle = useCallback((tagId: string) => {
+    setActiveTags(prev =>
+      prev.includes(tagId) ? prev.filter(t => t !== tagId) : [...prev, tagId]
+    );
+  }, []);
+
+  const handleClearTags = useCallback(() => {
+    setActiveTags([]);
+  }, []);
+
+  const handleVisit = useCallback((siteId: string) => {
+    addVisit(siteId);
+  }, [addVisit]);
 
   const filteredSites = useMemo(() => {
     let result = sites;
@@ -29,6 +47,20 @@ function App() {
       result = result.filter(s => s.category === activeCategory);
     }
 
+    // Tag filtering (AND logic across groups, OR within group)
+    if (activeTags.length > 0) {
+      const costTags = activeTags.filter(t => tagOptions.find(o => o.id === t && o.group === 'cost'));
+      const expTags = activeTags.filter(t => tagOptions.find(o => o.id === t && o.group === 'exp'));
+
+      result = result.filter(s => {
+        // Cost: match any selected cost tag
+        const costMatch = costTags.length === 0 || (s.tags.cost && costTags.includes(s.tags.cost));
+        // Exp: match all selected exp tags
+        const expMatch = expTags.length === 0 || expTags.every(t => s.tags.exp?.includes(t));
+        return costMatch && expMatch;
+      });
+    }
+
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       result = result.filter(
@@ -39,7 +71,7 @@ function App() {
     }
 
     return result;
-  }, [searchQuery, activeCategory, showFavoritesOnly, favorites]);
+  }, [searchQuery, activeCategory, showFavoritesOnly, favorites, activeTags]);
 
   const groupedSites = useMemo(() => {
     if (activeCategory !== 'all') {
@@ -53,6 +85,8 @@ function App() {
       }))
       .filter(g => g.sites.length > 0);
   }, [filteredSites, activeCategory]);
+
+  const recentSites = useMemo(() => getRecentSites(sites), [getRecentSites]);
 
   return (
     <div className="app">
@@ -68,7 +102,16 @@ function App() {
           categories={categories}
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
+          tagOptions={tagOptions}
+          activeTags={activeTags}
+          onTagToggle={handleTagToggle}
+          onClearTags={handleClearTags}
         />
+
+        {/* Recent visits */}
+        {!showFavoritesOnly && !searchQuery && activeTags.length === 0 && (
+          <RecentVisits sites={recentSites} onClear={clearRecent} />
+        )}
 
         <div className="sites-container">
           {groupedSites.length === 0 ? (
@@ -102,6 +145,7 @@ function App() {
                       site={site}
                       isFavorite={isFavorite(site.id)}
                       onToggleFavorite={toggleFavorite}
+                      onVisit={handleVisit}
                       index={i}
                     />
                   ))}

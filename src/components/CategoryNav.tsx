@@ -1,41 +1,88 @@
-import type { Category } from '../types';
-import { motion } from 'framer-motion';
+import { memo } from 'react';
+import type { Category, TagOption } from '../types';
 
 interface CategoryNavProps {
   categories: Category[];
   activeCategory: string;
   onCategoryChange: (id: string) => void;
+  tagOptions: TagOption[];
+  activeTags: string[];
+  onTagToggle: (tagId: string) => void;
+  onClearTags: () => void;
 }
 
-export function CategoryNav({ categories, activeCategory, onCategoryChange }: CategoryNavProps) {
+export const CategoryNav = memo(function CategoryNav({
+  categories,
+  activeCategory,
+  onCategoryChange,
+  tagOptions,
+  activeTags,
+  onTagToggle,
+  onClearTags,
+}: CategoryNavProps) {
+  const costTags = tagOptions.filter(t => t.group === 'cost');
+  const expTags = tagOptions.filter(t => t.group === 'exp');
+
   return (
-    <motion.div
-      className="category-nav"
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-    >
-      <div className="category-tags-wrap">
+    <div className="category-nav">
+      {/* Category pills */}
+      <div className="category-pills">
         <button
-          className={`category-tag ${activeCategory === 'all' ? 'active' : ''}`}
+          className={`category-pill ${activeCategory === 'all' ? 'active' : ''}`}
           onClick={() => onCategoryChange('all')}
-          style={activeCategory === 'all' ? { background: 'linear-gradient(135deg, #6366f1, #a78bfa)', color: '#fff', borderColor: 'transparent' } : {}}
         >
-          <span className="tag-icon">✨</span>
-          <span>全部</span>
+          全部
         </button>
-        {categories.map((cat) => (
+        {categories.map(cat => (
           <button
             key={cat.id}
-            className={`category-tag ${activeCategory === cat.id ? 'active' : ''}`}
+            className={`category-pill ${activeCategory === cat.id ? 'active' : ''}`}
             onClick={() => onCategoryChange(cat.id)}
-            style={activeCategory === cat.id ? { background: cat.gradient, color: '#fff', borderColor: 'transparent' } : {}}
           >
-            <span className="tag-icon">{cat.icon}</span>
-            <span>{cat.name}</span>
+            <span className="pill-icon">{cat.icon}</span>
+            <span className="pill-text">{cat.name}</span>
           </button>
         ))}
       </div>
-    </motion.div>
+
+      {/* Tag filters */}
+      <div className="tag-filters">
+        <div className="tag-group">
+          <span className="tag-group-label">费用</span>
+          <div className="tag-options">
+            {costTags.map(tag => (
+              <button
+                key={tag.id}
+                className={`tag-btn ${activeTags.includes(tag.id) ? 'active' : ''}`}
+                style={activeTags.includes(tag.id) ? { '--tag-color': tag.color } as React.CSSProperties : undefined}
+                onClick={() => onTagToggle(tag.id)}
+              >
+                {tag.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="tag-group">
+          <span className="tag-group-label">体验</span>
+          <div className="tag-options">
+            {expTags.map(tag => (
+              <button
+                key={tag.id}
+                className={`tag-btn ${activeTags.includes(tag.id) ? 'active' : ''}`}
+                style={activeTags.includes(tag.id) ? { '--tag-color': tag.color } as React.CSSProperties : undefined}
+                onClick={() => onTagToggle(tag.id)}
+              >
+                {tag.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        {activeTags.length > 0 && (
+          <button className="tag-clear" onClick={onClearTags}>
+            清除筛选
+          </button>
+        )}
+      </div>
+    </div>
   );
-}
+});

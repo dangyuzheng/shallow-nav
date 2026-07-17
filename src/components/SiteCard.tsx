@@ -1,27 +1,37 @@
-import { useState } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Site } from '../types';
-import { categories } from '../data/sites';
 
 interface SiteCardProps {
   site: Site;
   isFavorite: boolean;
   onToggleFavorite: (id: string) => void;
+  onVisit: (id: string) => void;
   index: number;
 }
 
-export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCardProps) {
+export const SiteCard = memo(function SiteCard({
+  site,
+  isFavorite,
+  onToggleFavorite,
+  onVisit,
+  index,
+}: SiteCardProps) {
   const [imgError, setImgError] = useState(false);
 
-  const handleFavClick = (e: React.MouseEvent) => {
+  const handleFavoriteClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     onToggleFavorite(site.id);
-  };
+  }, [site.id, onToggleFavorite]);
 
-  const category = categories.find(c => c.id === site.category);
-  const fallbackGradient = category?.gradient || 'linear-gradient(135deg, #6366f1, #a78bfa)';
+  const handleCardClick = useCallback(() => {
+    onVisit(site.id);
+  }, [site.id, onVisit]);
+
+  const costLabel = site.tags.cost === 'free' ? '免费' : site.tags.cost === 'paid' ? '付费' : '部分免费';
+  const costClass = site.tags.cost || '';
 
   return (
     <motion.a
@@ -29,14 +39,32 @@ export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCard
       target="_blank"
       rel="noopener noreferrer"
       className="site-card"
+      onClick={handleCardClick}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: Math.min(index * 0.04, 0.4), duration: 0.35 }}
+      transition={{ duration: 0.3, delay: index * 0.04 }}
       whileHover={{ y: -4 }}
     >
-      <div className="card-header">
+      {/* Favorite button */}
+      <button
+        className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+        onClick={handleFavoriteClick}
+        aria-label={isFavorite ? '取消收藏' : '收藏'}
+      >
+        <Heart
+          size={16}
+          fill={isFavorite ? 'currentColor' : 'none'}
+        />
+      </button>
+
+      {/* Card body */}
+      <div className="card-body">
         <div className="card-logo">
-          {!imgError ? (
+          {imgError ? (
+            <div className="logo-fallback" style={{ background: 'linear-gradient(135deg, #6366f1, #a78bfa)' }}>
+              {site.name.charAt(0)}
+            </div>
+          ) : (
             <img
               src={site.logo}
               alt={site.name}
@@ -44,29 +72,21 @@ export function SiteCard({ site, isFavorite, onToggleFavorite, index }: SiteCard
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-          ) : (
-            <span className="logo-fallback" style={{ background: fallbackGradient }}>
-              {site.name[0]}
-            </span>
           )}
         </div>
-        <motion.button
-          className={`fav-btn ${isFavorite ? 'active' : ''}`}
-          onClick={handleFavClick}
-          whileTap={{ scale: 0.7 }}
-          aria-label={isFavorite ? '取消收藏' : '收藏'}
-        >
-          <Heart
-            size={16}
-            fill={isFavorite ? '#f43f5e' : 'none'}
-            stroke={isFavorite ? '#f43f5e' : 'currentColor'}
-          />
-        </motion.button>
-      </div>
-      <div className="card-body">
-        <h3 className="card-title">{site.name}</h3>
-        <p className="card-desc">{site.description}</p>
+        <div className="card-info">
+          <h3 className="card-name">{site.name}</h3>
+          <p className="card-desc">{site.description}</p>
+          <div className="card-tags">
+            {costLabel && (
+              <span className={`card-tag cost-${costClass}`}>{costLabel}</span>
+            )}
+            {site.tags.exp?.includes('no-login') && (
+              <span className="card-tag exp-no-login">免登录</span>
+            )}
+          </div>
+        </div>
       </div>
     </motion.a>
   );
-}
+});
