@@ -341,7 +341,11 @@ img {
 .hero-section {
   position: relative;
   padding: 48px 0 40px;
-  margin-bottom: 36px;
+  margin-bottom: 68px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-bg-placeholder {
@@ -360,6 +364,7 @@ img {
 }
 
 .hero-content {
+  width: 100%;
   position: relative;
   z-index: 1;
   display: flex;
@@ -879,7 +884,7 @@ img {
 
   .hero-section {
     padding: 20px 0 16px;
-    margin-bottom: 16px;
+    margin-bottom: 48px;
   }
 
   .hero-bg-placeholder {
