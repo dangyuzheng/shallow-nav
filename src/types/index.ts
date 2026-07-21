@@ -1,5 +1,5 @@
-export type CostTag = 'free' | 'paid' | 'freemium';
-export type ExpTag = 'no-login';
+export type CostTag = "free" | "paid" | "freemium";
+export type ExpTag = "no-login";
 
 export interface Site {
   id: string;
@@ -10,7 +10,8 @@ export interface Site {
   category: string;
   tags: {
     cost?: CostTag;
-    exp?: ExpTag[];
+    exp?: any[];
+    speed?: any[];
   };
 }
 
