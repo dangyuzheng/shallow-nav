@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { SearchBar } from './components/SearchBar';
 import { SideNav } from './components/SideNav';
@@ -8,17 +8,41 @@ import { Footer } from './components/Footer';
 import { useFavorites } from './hooks/useFavorites';
 import { useRecentVisits } from './hooks/useRecentVisits';
 import { categories, sites } from './data/sites';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [showBackTop, setShowBackTop] = useState(false);
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const { addVisit, getRecentSites, clearRecent } = useRecentVisits();
 
+  // Track scroll for back-to-top button
+  useEffect(() => {
+    const onScroll = () => setShowBackTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  // Logo click: clear filters and scroll to top
+  const handleLogoClick = useCallback(() => {
+    setShowFavoritesOnly(false);
+    setSearchQuery('');
+    setActiveCategory('all');
+    scrollToTop();
+  }, [scrollToTop]);
+
   const handleSearch = useCallback((query: string) => {
     setSearchQuery(query);
+    if (query.trim()) {
+      setShowFavoritesOnly(false);
+    }
   }, []);
 
   const handleVisit = useCallback((siteId: string) => {
@@ -61,6 +85,7 @@ function App() {
         showFavoritesOnly={showFavoritesOnly}
         onToggleFavorites={() => setShowFavoritesOnly(v => !v)}
         favoriteCount={favorites.length}
+        onLogoClick={handleLogoClick}
       />
 
       <div className="app-body">
@@ -128,6 +153,23 @@ function App() {
       </div>
 
       <Footer />
+
+      {/* Back to top button - rendered at app root level */}
+      <AnimatePresence>
+        {showBackTop && (
+          <motion.button
+            className="back-to-top"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.2 }}
+            aria-label="Back to top"
+          >
+            <ArrowUp size={20} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

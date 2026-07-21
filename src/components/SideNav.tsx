@@ -1,5 +1,5 @@
-import { memo, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { memo, useEffect, useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Compass, Menu, X } from 'lucide-react';
 import type { Category } from '../types';
 
@@ -16,21 +16,19 @@ export const SideNav = memo(function SideNav({
 }: SideNavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Close mobile menu on category click
-  const handleClick = (id: string) => {
+  const handleClick = useCallback((id: string) => {
     onCategoryChange(id);
     setMobileOpen(false);
-    // Smooth scroll to section
     const el = document.getElementById(`category-${id}`);
     if (el) {
-      const headerOffset = 80;
+      const headerOffset = 90;
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
-  };
+  }, [onCategoryChange]);
 
-  // Track active section on scroll
+  // Track active section on scroll - trigger when section reaches upper-middle area
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,7 +39,11 @@ export const SideNav = memo(function SideNav({
           }
         });
       },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      {
+        // Trigger when section top enters the area between 80px from top and 45% of viewport height
+        rootMargin: '-80px 0px -55% 0px',
+        threshold: 0,
+      }
     );
 
     categories.forEach((cat) => {
@@ -73,19 +75,20 @@ export const SideNav = memo(function SideNav({
       </button>
 
       {/* Overlay for mobile */}
-      {mobileOpen && (
-        <div
-          className="side-nav-overlay"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="side-nav-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMobileOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Side navigation */}
       <nav className={`side-nav ${mobileOpen ? 'mobile-open' : ''}`}>
-        <div className="side-nav-header">
-          <Compass size={18} className="side-nav-icon" />
-          <span className="side-nav-title">分类导航</span>
-        </div>
         <ul className="side-nav-list">
           {categories.map((cat) => (
             <motion.li
@@ -98,13 +101,6 @@ export const SideNav = memo(function SideNav({
               >
                 <span className="side-nav-item-icon">{cat.icon}</span>
                 <span className="side-nav-item-text">{cat.name}</span>
-                {activeCategory === cat.id && (
-                  <motion.div
-                    className="side-nav-indicator"
-                    layoutId="side-nav-indicator"
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
-                )}
               </button>
             </motion.li>
           ))}

@@ -1,28 +1,18 @@
-import { Heart, ArrowUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface HeaderProps {
   showFavoritesOnly: boolean;
   onToggleFavorites: () => void;
   favoriteCount: number;
+  onLogoClick: () => void;
 }
 
-export function Header({ showFavoritesOnly, onToggleFavorites, favoriteCount }: HeaderProps) {
-  const [showBackTop, setShowBackTop] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setShowBackTop(window.scrollY > 400);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
+export function Header({ showFavoritesOnly, onToggleFavorites, favoriteCount, onLogoClick }: HeaderProps) {
   return (
     <header className="app-header">
       <div className="header-inner">
-        <div className="header-left" onClick={scrollToTop} style={{ cursor: 'pointer' }}>
+        <div className="header-left" onClick={onLogoClick} style={{ cursor: 'pointer' }}>
           <div className="logo">
             <img src="/logo.png" alt="浅途 Nav" className="logo-img" />
             <div className="logo-text">
@@ -45,22 +35,6 @@ export function Header({ showFavoritesOnly, onToggleFavorites, favoriteCount }: 
           </motion.button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {showBackTop && (
-          <motion.button
-            className="back-to-top"
-            onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ArrowUp size={18} />
-          </motion.button>
-        )}
-      </AnimatePresence>
     </header>
   );
 }
