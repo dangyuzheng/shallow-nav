@@ -22,7 +22,7 @@ export function Header({ showFavoritesOnly, onToggleFavorites, favoriteCount }: 
   return (
     <header className="app-header">
       <div className="header-inner">
-        <div className="header-left">
+        <div className="header-left" onClick={scrollToTop} style={{ cursor: 'pointer' }}>
           <div className="logo">
             <img src="/logo.png" alt="浅途 Nav" className="logo-img" />
             <div className="logo-text">
@@ -49,11 +49,11 @@ export function Header({ showFavoritesOnly, onToggleFavorites, favoriteCount }: 
       <AnimatePresence>
         {showBackTop && (
           <motion.button
-            className="back-top-btn"
+            className="back-to-top"
             onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={{ opacity: 0, scale: 0.5 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

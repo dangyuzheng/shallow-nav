@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { motion } from 'framer-motion';
 import { Clock, Trash2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import type { Site } from '../types';
 
 interface RecentVisitsProps {
@@ -12,19 +12,19 @@ export const RecentVisits = memo(function RecentVisits({ sites, onClear }: Recen
   if (sites.length === 0) return null;
 
   return (
-    <motion.section
-      className="recent-section"
+    <motion.div
+      className="recent-visits"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ delay: 0.3 }}
     >
       <div className="recent-header">
         <div className="recent-title-wrap">
-          <Clock size={16} className="recent-icon" />
+          <Clock size={14} className="recent-icon" />
           <span className="recent-title">最近访问</span>
         </div>
         <button className="recent-clear" onClick={onClear} title="清除记录">
-          <Trash2 size={13} />
+          <Trash2 size={12} />
           <span>清除</span>
         </button>
       </div>
@@ -43,6 +43,6 @@ export const RecentVisits = memo(function RecentVisits({ sites, onClear }: Recen
           </a>
         ))}
       </div>
-    </motion.section>
+    </motion.div>
   );
 });
