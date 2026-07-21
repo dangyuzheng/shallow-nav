@@ -1,4 +1,4 @@
-import type { Category, Site, TagOption } from "../types";
+import type { Category, Site } from "../types";
 
 export const categories: Category[] = [
   {
@@ -7,20 +7,6 @@ export const categories: Category[] = [
     icon: "⚡",
     color: "#6366f1",
     gradient: "linear-gradient(135deg, #6366f1, #818cf8)",
-  },
-  {
-    id: "search",
-    name: "资源下载",
-    icon: "🔎",
-    color: "#0ea5e9",
-    gradient: "linear-gradient(135deg, #0ea5e9, #38bdf8)",
-  },
-  {
-    id: "learning",
-    name: "学习充电",
-    icon: "🎓",
-    color: "#10b981",
-    gradient: "linear-gradient(135deg, #10b981, #34d399)",
   },
   {
     id: "design",
@@ -37,6 +23,13 @@ export const categories: Category[] = [
     gradient: "linear-gradient(135deg, #8b5cf6, #a78bfa)",
   },
   {
+    id: "media",
+    name: "影视多媒体",
+    icon: "🎬",
+    color: "#f43f5e",
+    gradient: "linear-gradient(135deg, #f43f5e, #fb7185)",
+  },
+  {
     id: "ai",
     name: "AI 工具",
     icon: "🤖",
@@ -51,18 +44,18 @@ export const categories: Category[] = [
     gradient: "linear-gradient(135deg, #14b8a6, #2dd4bf)",
   },
   {
-    id: "media",
-    name: "影视多媒体",
-    icon: "🎬",
-    color: "#f43f5e",
-    gradient: "linear-gradient(135deg, #f43f5e, #fb7185)",
+    id: "learning",
+    name: "学习充电",
+    icon: "🎓",
+    color: "#10b981",
+    gradient: "linear-gradient(135deg, #10b981, #34d399)",
   },
   {
-    id: "nav",
-    name: "综合导航站",
-    icon: "🧭",
-    color: "#06b6d4",
-    gradient: "linear-gradient(135deg, #06b6d4, #22d3ee)",
+    id: "search",
+    name: "资源下载",
+    icon: "🔎",
+    color: "#0ea5e9",
+    gradient: "linear-gradient(135deg, #0ea5e9, #38bdf8)",
   },
   {
     id: "extension",
@@ -71,16 +64,6 @@ export const categories: Category[] = [
     color: "#a855f7",
     gradient: "linear-gradient(135deg, #a855f7, #c084fc)",
   },
-];
-
-export const tagOptions: TagOption[] = [
-  { id: "free", label: "免费", group: "cost", color: "#10b981" },
-  { id: "paid", label: "付费", group: "cost", color: "#f43f5e" },
-  { id: "freemium", label: "部分免费", group: "cost", color: "#f59e0b" },
-  { id: "no-login", label: "免登录", group: "exp", color: "#6366f1" },
-  { id: "slow", label: "加载慢", group: "speed", color: "#f43f5e" },
-  { id: "install", label: "需要安装", group: "exp", color: "#f43f5e" },
-  { id: "online", label: "在线", group: "exp", color: "#0ea5e9" },
 ];
 
 export const sites: Site[] = [
@@ -133,24 +116,7 @@ export const sites: Site[] = [
     category: "design",
     tags: { cost: "free", exp: ["no-login"] },
   },
-  {
-    id: "zcool",
-    name: "站酷 ZCOOL",
-    description: "中国设计师互动平台，原创作品展示与交流社区",
-    url: "https://www.zcool.com.cn",
-    logo: "https://www.zcool.com.cn/favicon.ico",
-    category: "design",
-    tags: { cost: "free" },
-  },
-  {
-    id: "awwwards",
-    name: "Awwwards",
-    description: "全球顶级网页设计奖项平台，发现最佳网站设计",
-    url: "https://www.awwwards.com",
-    logo: "https://www.awwwards.com/favicon.ico",
-    category: "design",
-    tags: { cost: "freemium" },
-  },
+
   {
     id: "unsplash",
     name: "Unsplash",
@@ -197,13 +163,13 @@ export const sites: Site[] = [
     tags: { cost: "freemium", exp: ["no-login"] },
   },
   {
-    id: "zhongguose",
-    name: "中国色",
-    description: "中国传统色彩大全，古典雅致配色灵感",
-    url: "http://zhongguose.com",
-    logo: "http://zhongguose.com/favicon.ico",
+    id: "zcool",
+    name: "站酷 ZCOOL",
+    description: "中国设计师互动平台，原创作品展示与交流社区",
+    url: "https://www.zcool.com.cn",
+    logo: "https://www.zcool.com.cn/favicon.ico",
     category: "design",
-    tags: { cost: "free", exp: ["no-login"] },
+    tags: { cost: "free" },
   },
   {
     id: "js-design",
@@ -214,13 +180,39 @@ export const sites: Site[] = [
     category: "design",
     tags: { cost: "freemium" },
   },
-  // https://pixso.cn/
   {
     id: "pixso",
     name: "Pixso",
-    description: "免费高清图片素材库，支持商用，图片视频音频",
+    description: "界面设计平台",
     url: "https://pixso.cn",
     logo: "https://pixso.cn/favicon.ico",
+    category: "design",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "emoji8",
+    name: "Emoji8",
+    description: "Emoji 表情库，提供丰富的表情符号",
+    url: "https://emoji8.com/zh-hans/",
+    logo: "https://emoji8.com/favicon.ico",
+    category: "design",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "picsum",
+    name: "Picsum",
+    description: "免费随机图片链接",
+    url: "https://picsum.photos",
+    logo: "https://picsum.photos/favicon.ico",
+    category: "design",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "placehold",
+    name: "Placehold",
+    description: "占位图",
+    url: "https://placehold.co",
+    logo: "https://placehold.co/favicon.ico",
     category: "design",
     tags: { cost: "free", exp: ["no-login"] },
   },
@@ -332,24 +324,6 @@ export const sites: Site[] = [
   },
 
   // ===== 九、影视多媒体与创作工具 =====
-  {
-    id: "douban-movie",
-    name: "豆瓣电影",
-    description: "电影评分与评论社区，发现好电影",
-    url: "https://movie.douban.com",
-    logo: "https://img3.doubanio.com/favicon.ico",
-    category: "media",
-    tags: { cost: "free" },
-  },
-  {
-    id: "imdb",
-    name: "IMDb",
-    description: "全球最大的电影数据库，影片信息与评分",
-    url: "https://www.imdb.com",
-    logo: "https://m.media-amazon.com/images/G/01/imdb/images/favicon/favicon-32x32.png",
-    category: "media",
-    tags: { cost: "free", exp: ["no-login"] },
-  },
   {
     id: "capcut-web",
     name: "剪映网页版",

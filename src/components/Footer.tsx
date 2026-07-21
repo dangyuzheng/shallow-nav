@@ -3,11 +3,13 @@ export function Footer() {
     <footer className="app-footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <img src="/logo.png" alt="" className="footer-logo" />
+          <img src="./logo.png" alt="" className="footer-logo" />
           <span>浅途 Nav</span>
         </div>
         <p className="footer-text">精选优质站点，助你高效直达目标</p>
-        <p className="footer-copy">&copy; {new Date().getFullYear()} 浅途 Nav. All rights reserved.</p>
+        <p className="footer-copy">
+          &copy; {new Date().getFullYear()} 浅途 Nav. All rights reserved.
+        </p>
       </div>
     </footer>
   );

@@ -95,17 +95,6 @@ export const SiteCard = memo(function SiteCard({
         <div className="card-info">
           <h3 className="card-name">{site.name}</h3>
           <p className="card-desc">{site.description}</p>
-          <div className="card-tags">
-            {costLabel && (
-              <span className={`card-tag cost-${costClass}`}>{costLabel}</span>
-            )}
-            {site.tags.speed?.includes("slow") && (
-              <span className="card-tag speed-slow">慢速</span>
-            )}
-            {site.tags.exp?.includes("install") && (
-              <span className="card-tag install">需要安装</span>
-            )}
-          </div>
         </div>
       </div>
     </motion.a>
