@@ -850,6 +850,8 @@ img {
 
   .side-nav.mobile-open {
     transform: translateX(0);
+    background: #fff;
+    backdrop-filter: none;
   }
 
   .side-nav-mobile-toggle {
