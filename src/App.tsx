@@ -104,7 +104,7 @@ function App() {
             <div className="hero-bg-placeholder">
               <video
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                src="./v_5.mp4"
+                src="./v.mp4"
                 autoPlay
                 loop
                 muted
