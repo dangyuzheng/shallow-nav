@@ -3,10 +3,17 @@ import type { Category, Site } from "../types";
 export const categories: Category[] = [
   {
     id: "design",
-    name: "设计灵素材",
+    name: "设计素材",
     icon: "🎨",
     color: "#f59e0b",
     gradient: "linear-gradient(135deg, #f59e0b, #fbbf24)",
+  },
+  {
+    id: "media",
+    name: "多媒体工具",
+    icon: "🎬",
+    color: "#f43f5e",
+    gradient: "linear-gradient(135deg, #f43f5e, #fb7185)",
   },
   {
     id: "efficiency",
@@ -16,25 +23,18 @@ export const categories: Category[] = [
     gradient: "linear-gradient(135deg, #6366f1, #818cf8)",
   },
   {
-    id: "dev",
-    name: "开发者工具",
-    icon: "💻",
-    color: "#8b5cf6",
-    gradient: "linear-gradient(135deg, #8b5cf6, #a78bfa)",
-  },
-  {
-    id: "media",
-    name: "影视多媒体",
-    icon: "🎬",
-    color: "#f43f5e",
-    gradient: "linear-gradient(135deg, #f43f5e, #fb7185)",
-  },
-  {
     id: "ai",
     name: "AI 工具",
     icon: "🤖",
     color: "#ec4899",
     gradient: "linear-gradient(135deg, #ec4899, #f472b6)",
+  },
+  {
+    id: "dev",
+    name: "开发者工具",
+    icon: "💻",
+    color: "#8b5cf6",
+    gradient: "linear-gradient(135deg, #8b5cf6, #a78bfa)",
   },
   {
     id: "life",
@@ -67,8 +67,7 @@ export const categories: Category[] = [
 ];
 
 export const sites: Site[] = [
-  // ===== 一、效率工具与办公神器 =====
-  // Snipaste
+  // ===== 效率工具 =====
   {
     id: "snipaste",
     name: "Snipaste",
@@ -77,15 +76,6 @@ export const sites: Site[] = [
     logo: "https://www.snipaste.com/favicon.ico",
     category: "efficiency",
     tags: { cost: "free", exp: ["install"] },
-  },
-  {
-    id: "koukoutu",
-    name: "抠图",
-    description: "专业图片抠图工具",
-    url: "https://www.koukoutu.com",
-    logo: "https://www.koukoutu.com/favicon.ico",
-    category: "efficiency",
-    tags: { cost: "free", exp: ["no-login"] },
   },
   {
     id: "napkin",
@@ -105,18 +95,44 @@ export const sites: Site[] = [
     category: "efficiency",
     tags: { cost: "freemium" },
   },
+  {
+    id: "caoliao",
+    name: "草料二维码",
+    description: "专业二维码生成与解析工具，支持自定义样式、活码管理",
+    url: "https://cli.im",
+    logo: "https://cli.im/favicon.ico",
+    category: "efficiency",
+    tags: { cost: "freemium", exp: ["no-login"] },
+  },
+  {
+    id: "shimo",
+    name: "石墨文档",
+    description: "在线协作文档/表格/思维导图，支持团队实时协作",
+    url: "https://shimo.im",
+    logo: "https://shimo.im/favicon.ico",
+    category: "efficiency",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "excalidraw",
+    name: "Excalidraw",
+    description: "手绘风格在线白板，支持协作，开源免费",
+    url: "https://excalidraw.com",
+    logo: "https://excalidraw.com/favicon.ico",
+    category: "efficiency",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
 
-  // ===== 四、设计灵感与素材资源 =====
+  // ===== 设计素材 =====
   {
     id: "pixabay",
     name: "Pixabay",
-    description: "免费高清图片素材库，支持商用，图片视频音频",
+    description: "免费高清图片素材库，支持商用，图片视频音频全覆盖",
     url: "https://pixabay.com",
     logo: "https://pixabay.com/favicon.ico",
     category: "design",
     tags: { cost: "free", exp: ["no-login"] },
   },
-
   {
     id: "unsplash",
     name: "Unsplash",
@@ -183,9 +199,36 @@ export const sites: Site[] = [
   {
     id: "pixso",
     name: "Pixso",
-    description: "界面设计平台",
+    description: "国产在线UI/UX设计平台，支持原型设计、组件协作与交付",
     url: "https://pixso.cn",
     logo: "https://pixso.cn/favicon.ico",
+    category: "design",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "picsum",
+    name: "Picsum",
+    description: "免费随机图片占位图生成服务，快速接入开发原型",
+    url: "https://picsum.photos",
+    logo: "https://picsum.photos/favicon.ico",
+    category: "design",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "canva",
+    name: "Canva可画",
+    description: "在线平面设计工具，海量模板，海报/PPT/社交媒体图一键生成",
+    url: "https://www.canva.cn",
+    logo: "https://www.canva.cn/favicon.ico",
+    category: "design",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "tinypng",
+    name: "TinyPNG",
+    description: "智能PNG/JPG图片无损压缩工具，前端与设计师必备",
+    url: "https://tinypng.com",
+    logo: "https://tinypng.com/favicon.ico",
     category: "design",
     tags: { cost: "free", exp: ["no-login"] },
   },
@@ -198,26 +241,82 @@ export const sites: Site[] = [
     category: "design",
     tags: { cost: "free", exp: ["no-login"] },
   },
+
+  // ===== 多媒体工具 =====
   {
-    id: "picsum",
-    name: "Picsum",
-    description: "免费随机图片链接",
-    url: "https://picsum.photos",
-    logo: "https://picsum.photos/favicon.ico",
-    category: "design",
+    id: "capcut-web",
+    name: "剪映网页版",
+    description: "字节跳动在线视频编辑工具，AI 智能剪辑",
+    url: "https://www.capcut.cn",
+    logo: "https://www.capcut.cn/favicon.ico",
+    category: "media",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "gaoding-ps",
+    name: "稿定 PS",
+    description: "在线 Photoshop 替代品，轻量级图片编辑",
+    url: "https://ps.gaoding.com",
+    logo: "https://ps.gaoding.com/favicon.ico",
+    category: "media",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "audiomass",
+    name: "AudioMass",
+    description: "在线音频编辑器，支持剪切、混音、效果处理，无需安装",
+    url: "https://audiomass.co",
+    logo: "https://audiomass.co/favicon.ico",
+    category: "media",
     tags: { cost: "free", exp: ["no-login"] },
   },
   {
-    id: "placehold",
-    name: "Placehold",
-    description: "占位图",
-    url: "https://placehold.co",
-    logo: "https://placehold.co/favicon.ico",
-    category: "design",
+    id: "newcger",
+    name: "新CG儿",
+    description: "老牌影视后期社区，主打免费 AE 模板与特效素材分享",
+    url: "https://www.newcger.com/",
+    logo: "https://www.newcger.com/favicon.ico",
+    category: "media",
+    tags: { cost: "freemium", exp: ["no-login"] },
+  },
+  {
+    id: "koukoutu",
+    name: "抠图",
+    description: "专业在线AI图片抠图工具，一键去除背景",
+    url: "https://www.koukoutu.com",
+    logo: "https://www.koukoutu.com/favicon.ico",
+    category: "media",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "aigei",
+    name: "爱给音乐",
+    description: "汇聚海量音效、背景音乐，含免费可商用资源的综合素材站",
+    url: "https://www.aigei.com",
+    logo: "https://www.aigei.com/favicon.ico",
+    category: "media",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "vjshi",
+    name: "光厂(VJshi)",
+    description: "正版商用视频模板与素材交易平台",
+    url: "https://www.vjshi.com/",
+    logo: "https://www.vjshi.com/favicon.ico",
+    category: "media",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "zhitu",
+    name: "智图",
+    description: "腾讯出品在线图片压缩工具，支持WebP/AVIF高清格式转换",
+    url: "https://zhitu.isux.us",
+    logo: "https://zhitu.isux.us/favicon.ico",
+    category: "media",
     tags: { cost: "free", exp: ["no-login"] },
   },
 
-  // ===== 五、开发者与技术工具 =====
+  // ===== 开发者工具 =====
   {
     id: "github",
     name: "GitHub",
@@ -245,7 +344,6 @@ export const sites: Site[] = [
     category: "dev",
     tags: { cost: "free" },
   },
-
   {
     id: "taobao-npm",
     name: "淘宝 NPM 镜像",
@@ -264,8 +362,35 @@ export const sites: Site[] = [
     category: "dev",
     tags: { cost: "free", exp: ["no-login"] },
   },
+  {
+    id: "gitee",
+    name: "Gitee",
+    description: "国内代码托管平台，访问速度快，适配国内团队协作",
+    url: "shturl.cc/BrmgAGU",
+    logo: "shturl.cc/BrmgAGU/favicon.ico",
+    category: "dev",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "caniuse",
+    name: "Can I Use",
+    description: "前端API兼容性查询工具，前端开发必备",
+    url: "https://caniuse.com",
+    logo: "https://caniuse.com/favicon.ico",
+    category: "dev",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "juejin",
+    name: "掘金",
+    description: "国内优质开发者技术社区，干货文章与实战教程分享",
+    url: "https://juejin.cn",
+    logo: "https://juejin.cn/favicon.ico",
+    category: "dev",
+    tags: { cost: "free" },
+  },
 
-  // ===== 六、AI 效率工具 =====
+  // ===== AI 工具 =====
   {
     id: "doubao",
     name: "豆包",
@@ -284,8 +409,26 @@ export const sites: Site[] = [
     category: "ai",
     tags: { cost: "free" },
   },
+  {
+    id: "kimi",
+    name: "Kimi 智能助手",
+    description: "长文档处理能力突出，支持超大文件阅读与深度分析",
+    url: "https://kimi.moonshot.cn",
+    logo: "https://kimi.moonshot.cn/favicon.ico",
+    category: "ai",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "tongyi",
+    name: "通义千问",
+    description: "阿里巴巴旗下大模型，覆盖多场景AI生成能力",
+    url: "https://tongyi.aliyun.com",
+    logo: "https://tongyi.aliyun.com/favicon.ico",
+    category: "ai",
+    tags: { cost: "freemium" },
+  },
 
-  // ===== 八、生活服务与便民工具 =====
+  // ===== 生活便民 =====
   {
     id: "kuaidi100",
     name: "快递100",
@@ -307,7 +450,7 @@ export const sites: Site[] = [
   {
     id: "xiachufang",
     name: "下厨房",
-    description: "美食菜谱分享社区，家常菜、烘焙、养生食谱",
+    description: "美食菜谱分享社区，家常菜、烘焙、养生食谱全覆盖",
     url: "https://www.xiachufang.com",
     logo: "https://www.xiachufang.com/favicon.ico",
     category: "life",
@@ -323,56 +466,36 @@ export const sites: Site[] = [
     tags: { cost: "free", exp: ["no-login"] },
   },
 
-  // ===== 九、影视多媒体与创作工具 =====
-  {
-    id: "capcut-web",
-    name: "剪映网页版",
-    description: "字节跳动在线视频编辑工具，AI 智能剪辑",
-    url: "https://www.capcut.cn",
-    logo: "https://www.capcut.cn/favicon.ico",
-    category: "media",
-    tags: { cost: "freemium" },
-  },
-  {
-    id: "gaoding-ps",
-    name: "稿定 PS",
-    description: "在线 Photoshop 替代品，轻量级图片编辑",
-    url: "https://ps.gaoding.com",
-    logo: "https://ps.gaoding.com/favicon.ico",
-    category: "media",
-    tags: { cost: "freemium" },
-  },
-  {
-    id: "audiomass",
-    name: "AudioMass",
-    description: "在线音频编辑器，免费开源的网页版音频处理",
-    url: "https://audiomass.co",
-    logo: "https://audiomass.co/favicon.ico",
-    category: "media",
-    tags: { cost: "free", exp: ["no-login"] },
-  },
-
-  // ===== 二、资源搜索与下载 =====
+  // ===== 资源下载 =====
   {
     id: "pansoso",
     name: "盘搜搜",
-    description: "网盘资源搜索引擎，快速查找百度网盘分享文件",
+    description: "网盘资源搜索引擎，支持百度网盘、阿里云盘等多网盘检索",
     url: "https://www.pansoso.com",
     logo: "https://cdn.pansoso.com/slogo.png",
     category: "search",
     tags: { cost: "free", exp: ["no-login"] },
   },
   {
-    id: "chongluo-search",
+    id: "chongbuluo",
     name: "虫部落",
-    description: "资源搜索聚合平台，整合多种搜索渠道",
+    description: "资源搜索聚合平台，整合多种搜索渠道，精准查找资源",
     url: "https://www.chongbuluo.com",
     logo: "https://www.chongbuluo.com/favicon.ico",
     category: "search",
     tags: { cost: "free", exp: ["no-login"] },
   },
+  {
+    id: "jiumo",
+    name: "鸠摩搜索",
+    description: "电子书资源搜索引擎，支持多格式书籍检索下载",
+    url: "https://www.jiumodiary.com",
+    logo: "https://www.jiumodiary.com/favicon.ico",
+    category: "search",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
 
-  // ===== 三、在线学习与技能充电 =====
+  // ===== 学习充电 =====
   {
     id: "icourse163",
     name: "中国大学MOOC",
@@ -412,14 +535,41 @@ export const sites: Site[] = [
   {
     id: "open163",
     name: "网易公开课",
-    description: "国内外名校公开课，涵盖人文、科技、商业等",
+    description: "国内外名校公开课，涵盖人文、科技、商业等领域",
     url: "https://open.163.com",
     logo: "https://open.163.com/favicon.ico",
     category: "learning",
     tags: { cost: "free" },
   },
+  {
+    id: "bilibili",
+    name: "哔哩哔哩",
+    description: "综合学习视频平台，海量免费课程与实战教程",
+    url: "https://www.bilibili.com",
+    logo: "https://www.bilibili.com/favicon.ico",
+    category: "learning",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "leetcode",
+    name: "力扣 LeetCode",
+    description: "算法刷题平台，程序员面试与能力提升必备",
+    url: "https://leetcode.cn",
+    logo: "https://leetcode.cn/favicon.ico",
+    category: "learning",
+    tags: { cost: "freemium" },
+  },
+  {
+    id: "imooc",
+    name: "慕课网",
+    description: "IT技能垂直学习平台，实战导向的编程课程体系",
+    url: "https://www.imooc.com",
+    logo: "https://www.imooc.com/favicon.ico",
+    category: "learning",
+    tags: { cost: "freemium" },
+  },
 
-  // ===== 十一、浏览器插件 =====
+  // ===== 浏览器插件 =====
   {
     id: "cat-catch",
     name: "猫抓",
@@ -432,7 +582,7 @@ export const sites: Site[] = [
   {
     id: "image-assistant",
     name: "图片助手",
-    description: "Edge 浏览器图片批量下载插件，网页图片提取",
+    description: "Edge 浏览器图片批量下载插件，网页图片一键提取",
     url: "https://microsoftedge.microsoft.com/addons/detail/%E5%9B%BE%E7%89%87%E5%8A%A9%E6%89%8Bimageassistant-%E6%89%B9%E9%87%8F%E5%9B%BE%E7%89%87/odphnbhiddhdpoccbialllejaajemdio",
     logo: "https://microsoftedge.microsoft.com/favicon.ico",
     category: "extension",
@@ -444,6 +594,24 @@ export const sites: Site[] = [
     description: "Edge 浏览器 CSS 检视插件，一键提取网页样式",
     url: "https://microsoftedge.microsoft.com/addons/detail/css-peeper/anpmnhecdmglokefgjkloellpkhcmnen",
     logo: "https://microsoftedge.microsoft.com/favicon.ico",
+    category: "extension",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "tampermonkey",
+    name: "Tampermonkey",
+    description: "油猴脚本管理器，浏览器扩展增强神器",
+    url: "https://www.tampermonkey.net",
+    logo: "https://www.tampermonkey.net/favicon.ico",
+    category: "extension",
+    tags: { cost: "free", exp: ["no-login"] },
+  },
+  {
+    id: "ublock",
+    name: "uBlock Origin",
+    description: "高效广告拦截插件，轻量且开源",
+    url: "https://ublockorigin.com",
+    logo: "https://ublockorigin.com/favicon.ico",
     category: "extension",
     tags: { cost: "free", exp: ["no-login"] },
   },
