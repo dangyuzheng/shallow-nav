@@ -33,14 +33,6 @@ export const SiteCard = memo(function SiteCard({
     onVisit(site.id);
   }, [site.id, onVisit]);
 
-  const costLabel =
-    site.tags.cost === "free"
-      ? "免费"
-      : site.tags.cost === "paid"
-        ? "付费"
-        : "部分免费";
-  const costClass = site.tags.cost || "";
-
   return (
     <motion.a
       href={site.url}
