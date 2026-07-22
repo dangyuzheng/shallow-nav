@@ -2,18 +2,18 @@ import type { Category, Site } from "../types";
 
 export const categories: Category[] = [
   {
-    id: "efficiency",
-    name: "效率工具",
-    icon: "⚡",
-    color: "#6366f1",
-    gradient: "linear-gradient(135deg, #6366f1, #818cf8)",
-  },
-  {
     id: "design",
     name: "设计灵素材",
     icon: "🎨",
     color: "#f59e0b",
     gradient: "linear-gradient(135deg, #f59e0b, #fbbf24)",
+  },
+  {
+    id: "efficiency",
+    name: "效率工具",
+    icon: "⚡",
+    color: "#6366f1",
+    gradient: "linear-gradient(135deg, #6366f1, #818cf8)",
   },
   {
     id: "dev",
