@@ -108,6 +108,7 @@ function App() {
                 autoPlay
                 loop
                 muted
+                poster="./v_bg.jpg"
               ></video>
             </div>
             <div className="hero-content">
